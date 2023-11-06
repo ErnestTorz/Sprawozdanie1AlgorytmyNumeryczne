@@ -10,7 +10,7 @@ MaxSize=500;
 KOMENTARZ MULTILINE
 %}
 
-%{
+
 for i=1:1:MaxSize
             disp('iteration ');
             disp(i);
@@ -18,7 +18,8 @@ for i=1:1:MaxSize
             %%%%% ODKOMENTOWAC W ZALEZNOSCI OD PODPUNKTU !!!%%%%
             %A = vander(1:i); % A) Vandermonde
             %A = pascal(i);   % B) Pascal
-            %A = hilb(i);     % C) Hilbert    
+            %A = hilb(i);     % C) Hilbert
+            A = rand(i-1,i); A(end+1,:) = sum(A); % ostatni dopisek o sprawdzeniu działania z macierza osobliwa
             b = A*ones(size(A,1),1); % dla podpuktow A B C
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -83,14 +84,14 @@ plot(cond_A_arr(:,1),cond_A_arr(:,2));
 xlabel('Number of variables');
 ylabel('Cond A');
 
-%}
+
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% PODPUNKT D %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%{
 for i=1:1:MaxSize
             disp('iteration ');
             disp(i);
@@ -214,5 +215,5 @@ plot(cond_A_arr(:,1),cond_A_arr(:,11));
 xlabel('Number of variables');
 ylabel('Cond A');
 
-
+%}
 

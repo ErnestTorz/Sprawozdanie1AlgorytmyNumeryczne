@@ -10,7 +10,7 @@ MaxSize=500;
 KOMENTARZ MULTILINE
 %}
 
-%{
+
 for i=1:1:MaxSize
             disp('iteration ');
             disp(i);
@@ -18,7 +18,8 @@ for i=1:1:MaxSize
             %%%%% ODKOMENTOWAC W ZALEZNOSCI OD PODPUNKTU !!!%%%%
             %A = vander(1:i); % A) Vandermonde
             %A = pascal(i);   % B) Pascal
-            %A = hilb(i);     % C) Hilbert    
+            %A = hilb(i);     % C) Hilbert
+            A = rand(i-1,i); A(end+1,:) = sum(A); % ostatni dopisek o sprawdzeniu działania z macierza osobliwa
             b = A*ones(size(A,1),1); % dla podpuktow A B C
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -83,14 +84,14 @@ plot(cond_A_arr(:,1),cond_A_arr(:,2));
 xlabel('Number of variables');
 ylabel('Cond A');
 
-%}
+
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% PODPUNKT D %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%{
 for i=1:1:MaxSize
             disp('iteration ');
             disp(i);
@@ -101,8 +102,8 @@ for i=1:1:MaxSize
             [Q,R] = qr(b);
             rand_triu_matrix=triu(rand(i));
             for j=1:1:10
-                disp('k ');
-                disp(j);
+                %disp('k ');
+                %disp(j);
                 A = Q*(rand_triu_matrix^j);
          
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,19 +184,36 @@ plot(error_r(:,1),error_r(:,8));
 plot(error_r(:,1),error_r(:,9));
 plot(error_r(:,1),error_r(:,10));
 plot(error_r(:,1),error_r(:,11));
-plot(error_r(:,1),error_r(:,2));
 xlabel('Number of variables');
 ylabel('Rest L2 norm error');
 
 nexttile;
 plot(det_A_arr(:,1),det_A_arr(:,2));
+plot(det_A_arr(:,1),det_A_arr(:,3));
+plot(det_A_arr(:,1),det_A_arr(:,4));
+plot(det_A_arr(:,1),det_A_arr(:,5));
+plot(det_A_arr(:,1),det_A_arr(:,6));
+plot(det_A_arr(:,1),det_A_arr(:,7));
+plot(det_A_arr(:,1),det_A_arr(:,8));
+plot(det_A_arr(:,1),det_A_arr(:,9));
+plot(det_A_arr(:,1),det_A_arr(:,10));
+plot(det_A_arr(:,1),det_A_arr(:,11));
 xlabel('Number of variables');
 ylabel('Det A');
 
 nexttile;
 plot(cond_A_arr(:,1),cond_A_arr(:,2));
+plot(cond_A_arr(:,1),cond_A_arr(:,3));
+plot(cond_A_arr(:,1),cond_A_arr(:,4));
+plot(cond_A_arr(:,1),cond_A_arr(:,5));
+plot(cond_A_arr(:,1),cond_A_arr(:,6));
+plot(cond_A_arr(:,1),cond_A_arr(:,7));
+plot(cond_A_arr(:,1),cond_A_arr(:,8));
+plot(cond_A_arr(:,1),cond_A_arr(:,9));
+plot(cond_A_arr(:,1),cond_A_arr(:,10));
+plot(cond_A_arr(:,1),cond_A_arr(:,11));
 xlabel('Number of variables');
 ylabel('Cond A');
 
-
+%}
 
